@@ -18,7 +18,7 @@ Solution source: [Detail][How to add excerpt]
 Use `layout.my_var` instead of `page.my_var` because YAML FrontMatter var weren't read inside a layout file.
 [Detail][How to custom FM var]
 
-## Embed a Youtube video
+## Embed a Youtube video 
 Open a Youtube's video. Click **Share -> Embed**, copy HTML code and paste it directly in markdown. 
 
 Example:

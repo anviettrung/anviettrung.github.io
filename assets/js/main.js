@@ -39,31 +39,30 @@ $(function() {
   });
 
 
-
+  var lock_scroll_sidebar = false;
   $("#sidebar-nav ul li").on("click", "a", function(event) {
-
+    lock_scroll_sidebar = true;
     var position = $($(this).attr("href")).offset().top - 10;
-    $("html, body").animate({scrollTop: position}, 400);
+    $("html, body").animate({scrollTop: position}, 400, function() {
+      lock_scroll_sidebar = false;
+    });
     $("#sidebar-nav ul li a").parent().removeClass("active");
     $(this).parent().addClass("active");
     event.preventDefault();
-
   });
 
 
-
   $(window).scroll(function() {
+    if (!lock_scroll_sidebar) {
+      $(".post-content h2, .post-content h3").each(function() {
 
-    $(".post-content h2, .post-content h3").each(function() {
-
-      if ($(window).scrollTop() > $(this).offset().top) {
-        $("#sidebar-nav ul li a").parent().removeClass("active");
-        $("a[href$="+$(this).attr('id')+"]").parent().addClass("active");
-        event.preventDefault();
-      }
-
-
-    });
+        if ($(window).scrollTop() > $(this).offset().top - 11) {
+          $("#sidebar-nav ul li a").parent().removeClass("active");
+          $("a[href$="+$(this).attr('id')+"]").parent().addClass("active");
+          event.preventDefault();
+        }
+      });
+    }
 
   });
 

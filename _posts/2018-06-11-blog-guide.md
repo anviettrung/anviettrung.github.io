@@ -4,8 +4,6 @@ title: "Blog's tips/trick"
 date: 2018-06-16
 tags: [tips, web]
 ---
-<!--excerpt.start-->
-<!--excerpt.end-->
 ## Add excerpt to post
 Automation: 25 first words in post (include words in header, so careful). You can change number of words by setting the FrontMatter variable 
 `truncate_words`.
@@ -18,6 +16,9 @@ Solution source: [Detail][How to add excerpt]
 ## Custom FrontMatter variables in layout
 Use `layout.my_var` instead of `page.my_var` because YAML FrontMatter var weren't read inside a layout file.
 [Detail][How to custom FM var]
+
+## Change theme color (global)
+Edit color variable in minima.scss
 
 ## Embed a Youtube video
 Open a Youtube's video. Click **Share -> Embed**, copy HTML code and paste it directly in markdown. 

@@ -1,0 +1,9 @@
+{%- if post.tags -%}
+	<ul class="post-tag-list">
+		{%- for tag in post.tags -%}
+		  <li>
+		    <span class="post-meta post-tag"> {{ tag }}</span>
+		  </li>
+		{%- endfor -%}
+	</ul>
+{%- endif -%}

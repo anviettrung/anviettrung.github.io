@@ -28,10 +28,7 @@ $(function() {
   var section_index = 0;
   $(".post-content h2, .post-content h3").each(function(){
     
-    var text_content_modified = $(this).text();
-    // if (text_content_modified.length > 15)
-    //   text_content_modified = text_content_modified.substring(0, 11) + "...";
-    $("#sidebar-nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#header-number-" + section_index + "'>" + text_content_modified + "</a></li>");
+    $("#sidebar-nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#header-number-" + section_index + "'>" + $(this).text() + "</a></li>");
     $(this).attr("id","header-number-" + section_index);
     $("#sidebar-nav ul li:first-child a").parent().addClass("active");
     section_index += 1;

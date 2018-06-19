@@ -18,16 +18,11 @@ layout: default
         <div class="flex-container">
           {%- assign date_format = site.minima.date_format | default: "%d-%m-%Y" -%}
           <span class="post-meta">{{ post.date | date: date_format }}</span>
+          
+          {%- include reading-time-cal.html -%}
 
-          {%- if post.tags -%}
-            <ul class="post-tag-list">
-            {%- for tag in post.tags -%}
-              <li>
-                <span class="post-tag"> {{ tag }}</span>
-              </li>
-            {%- endfor -%}
-            </ul>
-          {%- endif -%}
+          {%- include tags.html -%}
+
         </div>
 
         <h3>

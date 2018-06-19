@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.post-reading-time-cal {
+  margin-left: 10px;
+}
+
 .post-tag-list {
   display: flex;
   list-style: none;
@@ -14,7 +18,7 @@
 }
 
 .post-tag {
-  background-color: #f1f1f1;
+  background-color: #FFB03B;
   margin: 5px;
   padding: 5px;
   text-align: center;

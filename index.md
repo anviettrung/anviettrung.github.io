@@ -5,4 +5,4 @@
 layout: home
 list_title: Notes
 ---
-<center>Những ghi chép về cuộc đời của An Việt Trung</center>
+<center>Những ghi chép của An Việt Trung</center>

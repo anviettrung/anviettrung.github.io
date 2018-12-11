@@ -10,7 +10,7 @@ featured_image: 'Room6.png'
 
 This is my final art!
 <!--excerpt.end-->
-# Process
+# **Process**
 ## 1. Few models and testing light
 ![stage 1](/assets/images/Room2.png)
 

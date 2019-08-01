@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-11T18:46:25+07:00</updated><id>http://localhost:4000/</id><title type="html">An’s blog</title><author><name>An Viet Trung</name></author><entry><title type="html">Blog’s tips/trick</title><link href="http://localhost:4000/2018/06/16/blog-guide.html" rel="alternate" type="text/html" title="Blog's tips/trick" /><published>2018-06-16T00:00:00+07:00</published><updated>2018-06-16T00:00:00+07:00</updated><id>http://localhost:4000/2018/06/16/blog-guide</id><content type="html" xml:base="http://localhost:4000/2018/06/16/blog-guide.html">&lt;h2 id=&quot;add-excerpt-to-post&quot;&gt;Add excerpt to post&lt;/h2&gt;
+&lt;p&gt;Automation: 25 first words in post (include words in header, so careful). You can change number of words by setting the FrontMatter variable 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;truncate_words&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;By hand (Recommended): Let excerpt is in &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;!--excerpt.start--&amp;gt;&lt;/code&gt; and 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;!--excerpt.end--&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Solution source: &lt;a href=&quot;http://frontendcollisionblog.com/jekyll/snippet/2015/03/23/how-to-show-a-summary-of-your-post-with-jekyll.html&quot;&gt;Detail&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;custom-frontmatter-variables-in-layout&quot;&gt;Custom FrontMatter variables in layout&lt;/h2&gt;
+&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;layout.my_var&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;page.my_var&lt;/code&gt; because YAML FrontMatter var weren’t read inside a layout file.
+&lt;a href=&quot;https://github.com/jekyll/jekyll/issues/4123&quot;&gt;Detail&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;change-theme-color-global&quot;&gt;Change theme color (global)&lt;/h2&gt;
+&lt;p&gt;Edit color variable in minima.scss&lt;/p&gt;
+
+&lt;h2 id=&quot;embed-a-youtube-video&quot;&gt;Embed a Youtube video&lt;/h2&gt;
+&lt;p&gt;Open a Youtube’s video. Click &lt;strong&gt;Share -&amp;gt; Embed&lt;/strong&gt;, copy HTML code and paste it directly in markdown.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;iframe&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;560&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;315&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://www.youtube-nocookie.com/embed/lFUlliTQEfk?rel=0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;frameborder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;allow=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;autoplay; encrypted-media&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;allowfullscreen&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;reponsive-video&quot;&gt;Reponsive video&lt;/h4&gt;
+&lt;p&gt;To fit a video size to screen, add a &lt;code class=&quot;highlighter-rouge&quot;&gt;class=&quot;video&quot;&lt;/code&gt; in tag &lt;code class=&quot;highlighter-rouge&quot;&gt;iframe&lt;/code&gt;. After that, put all of it in a &lt;code class=&quot;highlighter-rouge&quot;&gt;div&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;class=&quot;youtube-video&quot;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;youtube-video&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;iframe&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;video&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;560&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;315&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://www.youtube-nocookie.com/embed/lFUlliTQEfk?rel=0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;frameborder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;allow=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;autoplay; encrypted-media&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;allowfullscreen&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Result:&lt;/p&gt;
+&lt;div class=&quot;youtube-video&quot;&gt;
+  &lt;iframe class=&quot;video&quot; width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube-nocookie.com/embed/lFUlliTQEfk?rel=0&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</content><author><name>An Viet Trung</name></author><category term="tips" /><category term="web" /><summary type="html">Add excerpt to post Automation: 25 first words in post (include words in header, so careful). You can change number of words by setting the FrontMatter variable truncate_words.</summary></entry><entry><title type="html">Working room!</title><link href="http://localhost:4000/2018/03/26/3d-working-room.html" rel="alternate" type="text/html" title="Working room!" /><published>2018-03-26T00:00:00+07:00</published><updated>2018-03-26T00:00:00+07:00</updated><id>http://localhost:4000/2018/03/26/3d-working-room</id><content type="html" xml:base="http://localhost:4000/2018/03/26/3d-working-room.html">&lt;p&gt;&lt;img src=&quot;/assets/images/Room6.png&quot; alt=&quot;Complete&quot; /&gt;
+&lt;!--excerpt.start--&gt;&lt;/p&gt;
+
+&lt;p&gt;This is my final art!
+&lt;!--excerpt.end--&gt;&lt;/p&gt;
+&lt;h1 id=&quot;process&quot;&gt;&lt;strong&gt;Process&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&quot;1-few-models-and-testing-light&quot;&gt;1. Few models and testing light&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/Room2.png&quot; alt=&quot;stage 1&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2-choose-the-walls-color&quot;&gt;2. Choose the wall’s color&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/Room3.png&quot; alt=&quot;stage 2&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-change-perspective&quot;&gt;3. Change perspective&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/Room4.png&quot; alt=&quot;stage 3&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;4-adding-all-models-lighting-and-texture&quot;&gt;4. Adding all models, lighting and texture&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/Room5.png&quot; alt=&quot;stage 4&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;5-adding-materials-and-setting-up-the-lighting&quot;&gt;5. Adding materials and setting up the lighting&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/Room6.png&quot; alt=&quot;stage final&quot; /&gt;&lt;/p&gt;</content><author><name>An Viet Trung</name></author><category term="blender" /><category term="art" /><summary type="html"></summary></entry></feed>

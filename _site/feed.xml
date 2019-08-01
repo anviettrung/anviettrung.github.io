@@ -1,4 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-11T18:46:25+07:00</updated><id>http://localhost:4000/</id><title type="html">An’s blog</title><author><name>An Viet Trung</name></author><entry><title type="html">Blog’s tips/trick</title><link href="http://localhost:4000/2018/06/16/blog-guide.html" rel="alternate" type="text/html" title="Blog's tips/trick" /><published>2018-06-16T00:00:00+07:00</published><updated>2018-06-16T00:00:00+07:00</updated><id>http://localhost:4000/2018/06/16/blog-guide</id><content type="html" xml:base="http://localhost:4000/2018/06/16/blog-guide.html">&lt;h2 id=&quot;add-excerpt-to-post&quot;&gt;Add excerpt to post&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-02T01:36:28+07:00</updated><id>http://localhost:4000/</id><title type="html">An’s blog</title><author><name>An Viet Trung</name></author><entry><title type="html">Fake ip chơi GMS bằng ProtonVPN</title><link href="http://localhost:4000/2019/07/31/ms-proton-fakeip.html" rel="alternate" type="text/html" title="Fake ip chơi GMS bằng ProtonVPN" /><published>2019-07-31T00:00:00+07:00</published><updated>2019-07-31T00:00:00+07:00</updated><id>http://localhost:4000/2019/07/31/ms-proton-fakeip</id><content type="html" xml:base="http://localhost:4000/2019/07/31/ms-proton-fakeip.html">&lt;p&gt;&lt;img src=&quot;/assets/images/maple-14th-anniversary.jpg&quot; alt=&quot;Banner&quot; /&gt;&lt;/p&gt;
+
+&lt;!--excerpt.start--&gt;
+&lt;p&gt;Rất nhiều người Việt muốn chơi GMS nhưng thường &lt;strong&gt;không có kinh phí&lt;/strong&gt; nên gặp rào cản về fake ip nên hôm nay mình xin hướng dẫn các bạn 1 phần mềm fake ip khá ổn định và &lt;strong&gt;miễn phí&lt;/strong&gt; là &lt;strong&gt;ProtonVPN&lt;/strong&gt;.
+&lt;!--excerpt.end--&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;giới-thiệu-chung&quot;&gt;Giới thiệu chung&lt;/h2&gt;
+
+&lt;p&gt;Đây là một phần mềm fake ip &lt;strong&gt;có trả phí&lt;/strong&gt; nhưng cho phép ta được sử dụng &lt;strong&gt;hàng trial 7 ngày miễn phí&lt;/strong&gt;. Ta sẽ lách luật để cách sử dụng hàng trial này được &lt;strong&gt;vĩnh viễn&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;LƯU Ý: đây không phải là một hành vi hợp pháp nên khuyến cáo không lạm dụng. Nếu bạn thực sự muốn gắn bó lâu với game và thực sự có điều kiện tài chính thì nên dùng các hàng trả phí vì lợi ích của chính bạn và những người làm phần mềm&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;Đánh-giá&quot;&gt;Đánh giá&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Khá ổn định: Chơi GMS skill và potion mượt. Chỉ có nhặt đồ hơi bị delay tẹo nhưng không qúa đáng kể (nếu biết dùng con pet tặng đầu game hiệu quả thì không phải lo, về cách hướng dẫn sử dụng thì mình sẽ viết ở guide khác)&lt;/li&gt;
+  &lt;li&gt;An toàn: Không có virus hay ads. Mình đã sử dụng rất lâu nhưng chưa bị GM phát hiện&lt;/li&gt;
+  &lt;li&gt;Miễn phí (nhưng phải lập 1 clone/tuần -&amp;gt; 4 clone/tháng)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;hướng-dẫn-sử-dụng-10-15-cho-lần-đầu-5-mỗi-tuần-ở-bước-cuối&quot;&gt;Hướng dẫn sử dụng (10-15’ cho lần đầu, 5’ mỗi tuần ở bước cuối)&lt;/h2&gt;
+
+&lt;p&gt;Bước 1: Vào trang của ProtonVPN: https://protonvpn.com/&lt;/p&gt;
+
+&lt;p&gt;Bước 2: Vào &lt;strong&gt;Pricing&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Get Free&lt;/strong&gt; -&amp;gt; (tự động sang trang mới) -&amp;gt; &lt;strong&gt;Get Free&lt;/strong&gt; tiếp&lt;/p&gt;
+
+&lt;p&gt;Bước 3: Ở đây bạn sẽ &lt;strong&gt;nhập 1 email&lt;/strong&gt; vào và bấm &lt;strong&gt;Get ProtonVPN Free&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Bước 4: Nhập &lt;strong&gt;verification code&lt;/strong&gt; từ mail vào sau đó điền tiếp theo mẫu là có 1 tài khoản dùng &lt;strong&gt;free 7 ngày&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Bước 5: Sử dụng Proton khá đơn giản. Chỉ cần đăng nhập vào và chọn vùng cần connect. Để chơi GMS thì nên chọn &lt;strong&gt;Canada&lt;/strong&gt; hoặc &lt;strong&gt;US&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Bước 6: Vào GMS và enjoy :)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bước 7:&lt;/strong&gt; Khi hết 7 ngày trial thì lập acc mới dùng tiếp. Cách để tạo &lt;strong&gt;unlimited acc&lt;/strong&gt; thì có ở những mục dưới. Do Proton lập acc dựa vào gmail nên chỉ cần biết cách tạo clone gmail là dùng thoải mái.&lt;/p&gt;
+
+&lt;h2 id=&quot;unlimited-gmail-account-guide&quot;&gt;Unlimited gmail account guide&lt;/h2&gt;
+
+&lt;p&gt;Trước hết, bạn cần biết là khi tạo 1 gmail thì ta cần 1 sđt để nhận code confirm do gút gồ gửi. Điều cần lưu ý là với mỗi sđt sẽ &lt;strong&gt;chỉ được kết nối tối đa 4 tài khoản tại 1 thời điểm&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Khi lập gmail ở bước thứ 2 sẽ có 2 trường hợp xảy ra:&lt;/p&gt;
+&lt;h3 id=&quot;th1-không-yêu-cầu-sđt&quot;&gt;TH1: Không yêu cầu sđt&lt;/h3&gt;
+&lt;p&gt;Đôi khi bạn sẽ tới trang mà ở đó sđt là 1 trường không bắt buộc (~really nice~). Nêú được vậy thì cứ thoải mái lập 1 clone rồi nhập nó sang trang Proton để lấy tài khoản free thôi :)&lt;/p&gt;
+&lt;h3 id=&quot;th2-yêu-cầu-nhập-code-từ-sms&quot;&gt;TH2: Yêu cầu nhập code từ SMS&lt;/h3&gt;
+&lt;p&gt;Mình không biết điều kiện dẫn tới trường hợp này nhưng có lẽ nếu bạn lập quá nhiều tại khoản trên 1 máy tính thì khả năng cao là google sẽ bắt trường sđt của bạn là bắt buộc (chắc tránh lập clone F3). Tới đây bạn không cần lo lắng cứ nhập sđt của bạn rồi lập clone như bình thường.&lt;/p&gt;
+
+&lt;p&gt;Sau khi lập clone xong, điều đầu tiên nên làm là vào phần &lt;strong&gt;Tài khoản google&lt;/strong&gt;.
+Nó sẽ dẫn bạn sang 1 trang mới, vào tiếp &lt;strong&gt;Thông tin cá nhân&lt;/strong&gt;. Ở đây hãy xoá đi sđt mà bạn đã đăng kí. Bây giờ bạn hoàn toàn có thể sử dụng lại sđt này để đăng kí clone khác mà không lo luật &lt;strong&gt;4 acc/ 1 sđt&lt;/strong&gt;. So good :)&lt;/p&gt;
+
+&lt;h2 id=&quot;end&quot;&gt;End&lt;/h2&gt;
+&lt;p&gt;Chúc các mapler Việt chơi game vui vẻ &lt;strong&gt;F2&lt;/strong&gt;&lt;/p&gt;</content><author><name>An Viet Trung</name></author><category term="GMS" /><category term="fakeip" /><category term="guide" /><summary type="html"></summary></entry><entry><title type="html">Blog’s tips/trick</title><link href="http://localhost:4000/2018/06/16/blog-guide.html" rel="alternate" type="text/html" title="Blog's tips/trick" /><published>2018-06-16T00:00:00+07:00</published><updated>2018-06-16T00:00:00+07:00</updated><id>http://localhost:4000/2018/06/16/blog-guide</id><content type="html" xml:base="http://localhost:4000/2018/06/16/blog-guide.html">&lt;h2 id=&quot;add-excerpt-to-post&quot;&gt;Add excerpt to post&lt;/h2&gt;
 &lt;p&gt;Automation: 25 first words in post (include words in header, so careful). You can change number of words by setting the FrontMatter variable 
 &lt;code class=&quot;highlighter-rouge&quot;&gt;truncate_words&lt;/code&gt;.&lt;/p&gt;
 

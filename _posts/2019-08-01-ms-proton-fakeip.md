@@ -25,7 +25,7 @@ Rất nhiều người Việt muốn chơi GMS nhưng thường **không có kin
 
 ## Hướng dẫn sử dụng (10-15' cho lần đầu, 5' mỗi tuần ở bước cuối)
 
-Bước 1: Vào trang của ProtonVPN: https://protonvpn.com/
+Bước 1: Vào trang của ProtonVPN: [ProtonVPN's Main site](https://protonvpn.com/)
 
 Bước 2: Vào **Pricing** -> **Get Free** -> (tự động sang trang mới) -> **Get Free** tiếp
 
@@ -54,7 +54,7 @@ Nó sẽ dẫn bạn sang 1 trang mới, vào tiếp **Thông tin cá nhân**. �
 
 ## Update: Sử dụng Temp mail (cách mới)
 
-Vào trang: https://temp-mail.org/en/
+Vào trang: [Temp Mail Service](https://temp-mail.org/en/)
 
 Sử dụng email trang đó cung cấp để đăng kí acc mới
 

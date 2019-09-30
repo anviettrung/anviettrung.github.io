@@ -52,6 +52,12 @@ Mình không biết điều kiện dẫn tới trường hợp này nhưng có l
 Sau khi lập clone xong, điều đầu tiên nên làm là vào phần **Tài khoản google**.
 Nó sẽ dẫn bạn sang 1 trang mới, vào tiếp **Thông tin cá nhân**. Ở đây hãy xoá đi sđt mà bạn đã đăng kí. Bây giờ bạn hoàn toàn có thể sử dụng lại sđt này để đăng kí clone khác mà không lo luật **4 acc/ 1 sđt**. So good :)
 
+## Update: Sử dụng Temp mail (cách mới)
+
+Vào trang: https://temp-mail.org/en/
+
+Sử dụng email trang đó cung cấp để đăng kí acc mới
+
 ## End
 Chúc các mapler Việt chơi game vui vẻ **F2**
 

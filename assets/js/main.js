@@ -14,6 +14,7 @@ $(window).resize(sectionHeight);
 
 $(function() {
 
+  // When window resized, check to hide/show SidebarNav depend on window's width
   $(window).on("resize", function() {
 
     if ($(window).width() < $(".post-content").width() + 2*($("#sidebar-nav").width() + 10))
@@ -24,7 +25,7 @@ $(function() {
   });
 
 
-
+  // Create list of links on sidebar
   var section_index = 0;
   $(".post-content h2, .post-content h3").each(function(){
     

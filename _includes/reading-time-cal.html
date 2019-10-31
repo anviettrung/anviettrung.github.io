@@ -1,6 +1,9 @@
 {%- if post.content -%}
 <div class="post-meta post-reading-time-cal">
 	{% assign word_count = post.content | number_of_words %}
+	{% if word_count < 200 %}
+		{% assign word_count = 200 %}
+	{% endif %}
 	<p> {{ word_count | divided_by: 200 }} min read</p>
 </div>
 {%- endif -%}

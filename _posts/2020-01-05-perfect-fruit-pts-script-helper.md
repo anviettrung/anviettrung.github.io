@@ -9,7 +9,7 @@ featured_image:
 ## Hướng dẫn sử dụng script AutoCut trong photoshop
 <!--excerpt.end-->
 ### 1. Cài đặt
-Đầu tiên hãy tải script [AutoCut.jsx][1].
+Đầu tiên hãy tải script <a href="/assets/pts_script/perfect_fruit/AutoCut.jsx" download>AutoCut.jsx</a>
 
 Tiếp theo hãy để nó vào đường dẫn sau
 
@@ -35,5 +35,3 @@ Sau khi dùng sẽ được như hình dưới
 Đến đây là thành công rồi không phải lỗi đâu. Giờ thì tạo 1 folders mới rồi save đống layer này nữa là xong :)
 
 ![Minh hoạ 4](/assets/images/perfect-fruit-project/4.png)
-
-[1]:{{ site.url }}/assets/pts_script/perfect_fruit/AutoCut.jsx

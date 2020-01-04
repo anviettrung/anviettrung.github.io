@@ -2,7 +2,7 @@
 layout: post
 title: "[Photoshop scripting] AutoCut.jsx"
 date: 2020-01-05
-tags: [pts, scripting, unity, PerfectFruitProject, javascript]
+tags: [pts, scripting, unity]
 featured_image:
 ---
 <!--excerpt.start-->

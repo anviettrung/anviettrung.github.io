@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-31T19:27:39+07:00</updated><id>http://localhost:4000/</id><title type="html">An’s blog</title><author><name>An Viet Trung</name></author><entry><title type="html">Game Showcase 2019</title><link href="http://localhost:4000/2019/10/31/game-showcase.html" rel="alternate" type="text/html" title="Game Showcase 2019" /><published>2019-10-31T00:00:00+07:00</published><updated>2019-10-31T00:00:00+07:00</updated><id>http://localhost:4000/2019/10/31/game-showcase</id><content type="html" xml:base="http://localhost:4000/2019/10/31/game-showcase.html">&lt;!--excerpt.start--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-05T03:17:21+07:00</updated><id>http://localhost:4000/</id><title type="html">An’s blog</title><author><name>An Viet Trung</name></author><entry><title type="html">[Photoshop scripting] AutoCut.jsx</title><link href="http://localhost:4000/2020/01/05/perfect-fruit-pts-script-helper.html" rel="alternate" type="text/html" title="[Photoshop scripting] AutoCut.jsx" /><published>2020-01-05T00:00:00+07:00</published><updated>2020-01-05T00:00:00+07:00</updated><id>http://localhost:4000/2020/01/05/perfect-fruit-pts-script-helper</id><content type="html" xml:base="http://localhost:4000/2020/01/05/perfect-fruit-pts-script-helper.html">&lt;!--excerpt.start--&gt;
+&lt;h2 id=&quot;hướng-dẫn-sử-dụng-script-autocut-trong-photoshop&quot;&gt;Hướng dẫn sử dụng script AutoCut trong photoshop&lt;/h2&gt;
+&lt;!--excerpt.end--&gt;
+&lt;h3 id=&quot;1-cài-đặt&quot;&gt;1. Cài đặt&lt;/h3&gt;
+&lt;p&gt;Đầu tiên hãy tải script &lt;a href=&quot;http://localhost:4000/assets/pts_script/perfect_fruit/AutoCut.jsx&quot;&gt;AutoCut.jsx&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tiếp theo hãy để nó vào đường dẫn sau&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mac: ~/Applications/Adobe Photoshop/Presets/Scripts/&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PC: C:\Program Files\Adobe\Adobe Photoshop\Presets\Scripts\&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Nếu trước đó bạn đang bật Photoshop, hãy tắt đi rồi bật lại thì mới thấy được script trên.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-sử-dụng&quot;&gt;2. Sử dụng&lt;/h2&gt;
+&lt;p&gt;Mở hết các mảnh thái và sắp xếp theo đúng thứ tự trong bảng layers, và sắp xếp vị trí của các mảnh sao cho khít nhau.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/perfect-fruit-project/1.png&quot; alt=&quot;Minh hoạ 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sau khi sắp xếp hãy save file psd trước khi dùng script (để nhỡ có làm sao còn quay về được :)). Dùng script bằng cách chọn File-&amp;gt;Scripts-&amp;gt;AutoCut&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/perfect-fruit-project/2.png&quot; alt=&quot;Minh hoạ 2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sau khi dùng sẽ được như hình dưới&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/perfect-fruit-project/3.png&quot; alt=&quot;Minh hoạ 3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Đến đây là thành công rồi không phải lỗi đâu. Giờ thì tạo 1 folders mới rồi save đống layer này nữa là xong :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/perfect-fruit-project/4.png&quot; alt=&quot;Minh hoạ 4&quot; /&gt;&lt;/p&gt;</content><author><name>An Viet Trung</name></author><category term="pts" /><category term="scripting" /><category term="unity" /><category term="PerfectFruitProject" /><category term="javascript" /><summary type="html">Hướng dẫn sử dụng script AutoCut trong photoshop 1. Cài đặt Đầu tiên hãy tải script AutoCut.jsx.</summary></entry><entry><title type="html">Game Showcase 2019</title><link href="http://localhost:4000/2019/10/31/game-showcase.html" rel="alternate" type="text/html" title="Game Showcase 2019" /><published>2019-10-31T00:00:00+07:00</published><updated>2019-10-31T00:00:00+07:00</updated><id>http://localhost:4000/2019/10/31/game-showcase</id><content type="html" xml:base="http://localhost:4000/2019/10/31/game-showcase.html">&lt;!--excerpt.start--&gt;
 &lt;p&gt;Video showcase is in the article.
 &lt;!--excerpt.end--&gt;&lt;/p&gt;
 &lt;div class=&quot;youtube-video&quot;&gt;

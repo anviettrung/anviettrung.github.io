@@ -1,0 +1,78 @@
+---
+---
+<script>
+  function setupLightbox() {
+    const images = Array.from(
+      document.querySelectorAll<HTMLImageElement>('.post-body img')
+    );
+    if (images.length === 0) return;
+
+    let overlay: HTMLDivElement | null = null;
+    let currentIndex = 0;
+
+    function close() {
+      overlay?.remove();
+      overlay = null;
+      document.removeEventListener('keydown', onKeyDown);
+    }
+
+    function show(index: number) {
+      currentIndex = (index + images.length) % images.length;
+      const src = images[currentIndex]!.getAttribute('src')!;
+      const alt = images[currentIndex]!.getAttribute('alt') ?? '';
+
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) close();
+        });
+        document.body.appendChild(overlay);
+        document.addEventListener('keydown', onKeyDown);
+      }
+
+      overlay.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = alt;
+      overlay.appendChild(img);
+
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'lightbox-btn lightbox-close';
+      closeBtn.textContent = '✕';
+      closeBtn.setAttribute('aria-label', 'Đóng');
+      closeBtn.addEventListener('click', close);
+      overlay.appendChild(closeBtn);
+
+      if (images.length > 1) {
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'lightbox-btn lightbox-prev';
+        prevBtn.textContent = '‹';
+        prevBtn.setAttribute('aria-label', 'Ảnh trước');
+        prevBtn.addEventListener('click', () => show(currentIndex - 1));
+        overlay.appendChild(prevBtn);
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'lightbox-btn lightbox-next';
+        nextBtn.textContent = '›';
+        nextBtn.setAttribute('aria-label', 'Ảnh sau');
+        nextBtn.addEventListener('click', () => show(currentIndex + 1));
+        overlay.appendChild(nextBtn);
+      }
+    }
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') close();
+      if (images.length > 1) {
+        if (e.key === 'ArrowLeft') show(currentIndex - 1);
+        if (e.key === 'ArrowRight') show(currentIndex + 1);
+      }
+    }
+
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => show(index));
+    });
+  }
+
+  setupLightbox();
+</script>

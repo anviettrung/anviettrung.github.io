@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Tag from '../components/Tag.astro';
+import { getExcerpt, getThumbnail, datePathParts, postHref } from '../lib/posts';
+
+const allPosts = await getCollection('posts');
+const posts = allPosts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .map((post) => {
+    const { year, month, day } = datePathParts(post.data.date);
+    return {
+      post,
+      href: postHref(post.id, post.data.date),
+      dateLabel: `${year} · ${month} · ${day}`,
+      excerpt: getExcerpt(post.body ?? '', post.data.truncate_words),
+      thumbnail: getThumbnail(post.body ?? '', post.data.featured_image),
+    };
+  });
+---
+<BaseLayout title="An's blog">
+  <Header current="notes" />
+
+  <div class="intro">
+    <div class="intro-avatar"><span>AT</span></div>
+    <div>
+      <p>
+        Mình là An — làm 3D thi thoảng, viết script khi không tìm ra tool nào làm sẵn việc mình
+        cần, và hay vọc mấy thứ liên quan tới mạng/network cho vui. Đây là nơi note lại những gì
+        mày mò được.
+      </p>
+      <div class="intro-pills">
+        <span class="pill" data-cat="art">Blender &amp; 3D</span>
+        <span class="pill" data-cat="script">Scripting</span>
+        <span class="pill" data-cat="game">Game dev</span>
+        <span class="pill" data-cat="guide">Networking</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="index-heading">Notes — {posts.length} entries</div>
+  <ul class="entries">
+    {posts.map(({ post, href, dateLabel, excerpt, thumbnail }) => (
+      <li class="entry" data-cat={post.data.category}>
+        <div class="entry-date">{dateLabel}</div>
+        <div class="entry-main">
+          <div class="entry-text">
+            <h3 class="entry-title"><a href={href}>{post.data.title}</a></h3>
+            <p class="entry-excerpt">{excerpt}</p>
+            <div class="entry-tags">
+              {post.data.tags.map((tag) => <Tag text={tag} />)}
+            </div>
+          </div>
+          {thumbnail && <img class="entry-thumb" src={thumbnail} alt="" loading="lazy" />}
+        </div>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

@@ -53,10 +53,12 @@ const around = [newer, older].filter((p) => p !== undefined);
       )}
     </header>
 
-    <TableOfContents headings={headings} />
+    <div class="relative">
+      <TableOfContents headings={headings} />
 
-    <div class="prose" data-pagefind-body>
-      <Content />
+      <div class="prose" data-pagefind-body>
+        <Content />
+      </div>
     </div>
   </article>
 

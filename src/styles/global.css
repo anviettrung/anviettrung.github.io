@@ -168,6 +168,23 @@ kbd,
   background-color: var(--shiki-dark-bg);
 }
 
+/* Nhảy tới heading: chừa khoảng trên, cuộn mượt */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+.prose :is(h2, h3) {
+  scroll-margin-top: 2rem;
+}
+.toc-active {
+  color: var(--accent) !important;
+  border-left-color: var(--accent) !important;
+}
+
 /* ---------- Lightbox ---------- */
 .lightbox {
   @apply fixed inset-0 z-50 flex flex-col items-center justify-center gap-3 bg-black/85 p-6 backdrop-blur-sm;

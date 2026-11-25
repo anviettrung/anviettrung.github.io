@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string;
+  href?: string;
+  linkLabel?: string;
+}
+const { title, href, linkLabel = 'Xem tất cả' } = Astro.props;
+---
+<div class="mb-5 flex items-baseline justify-between gap-4">
+  <h2 class="eyebrow">{title}</h2>
+  {href && (
+    <a href={href} class="text-sm text-muted transition-colors hover:text-accent">
+      {linkLabel} →
+    </a>
+  )}
+</div>

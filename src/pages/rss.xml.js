@@ -1,20 +1,19 @@
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
-import { getExcerpt, postHref } from '../lib/posts';
+import { site } from '../site.config';
+import { getPosts, getExcerpt, postHref } from '../lib/posts';
 
 export async function GET(context) {
-  const posts = await getCollection('posts');
+  const posts = await getPosts();
   return rss({
-    title: "An's blog",
-    description: 'Những ghi chép của An Việt Trung',
+    title: site.name,
+    description: site.description,
     site: context.site,
-    items: posts
-      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-      .map((post) => ({
-        title: post.data.title,
-        pubDate: post.data.date,
-        description: getExcerpt(post.body ?? '', post.data.truncate_words),
-        link: postHref(post.id, post.data.date),
-      })),
+    items: posts.map((post) => ({
+      title: post.data.title,
+      pubDate: post.data.date,
+      description: getExcerpt(post.body ?? '', post.data.truncate_words),
+      link: postHref(post.id, post.data.date),
+      categories: post.data.tags,
+    })),
   });
 }

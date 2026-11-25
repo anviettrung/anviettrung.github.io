@@ -1,0 +1,42 @@
+---
+/**
+ * Ô tìm kiếm Pagefind. Chỉ mục được tạo sau khi build (`npm run build`),
+ * nên khi chạy `npm run dev` ô này báo chưa có chỉ mục.
+ */
+---
+<div class="search-root" data-search>
+  <noscript><p class="text-sm text-muted">Cần bật JavaScript để tìm kiếm.</p></noscript>
+</div>
+
+<script>
+  async function mount() {
+    const root = document.querySelector<HTMLElement>('[data-search]');
+    if (!root || root.dataset.mounted) return;
+    root.dataset.mounted = '1';
+    try {
+      const url = '/pagefind/pagefind-ui.js';
+      await import(/* @vite-ignore */ url);
+      if (!document.querySelector('link[data-pagefind-css]')) {
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = '/pagefind/pagefind-ui.css';
+        css.dataset.pagefindCss = '';
+        document.head.appendChild(css);
+      }
+      const PagefindUI = (window as any).PagefindUI;
+      new PagefindUI({
+        element: root,
+        showSubResults: true,
+        showImages: false,
+        translations: {
+          placeholder: 'Tìm bài viết, dự án…',
+          zero_results: 'Không có kết quả cho [SEARCH_TERM]',
+        },
+      });
+    } catch {
+      root.innerHTML =
+        '<p class="text-sm text-faint">Tìm kiếm chỉ có sau khi build (chưa có chỉ mục Pagefind).</p>';
+    }
+  }
+  document.addEventListener('astro:page-load', mount);
+</script>

@@ -1,43 +1,57 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { site } from '../site.config';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
   image?: string;
 }
-const { title, description = 'Những ghi chép của An Việt Trung', image } = Astro.props;
+const { title, description = site.description, image } = Astro.props;
+const fullTitle = title ? `${title} — ${site.name}` : site.title;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
 ---
 <!doctype html>
-<html lang="vi">
+<html lang={site.locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href={canonicalURL} />
-    <title>{title}</title>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={site.name} href="/rss.xml" />
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     {ogImage && <meta property="og:image" content={ogImage} />}
-    <link rel="alternate" type="application/rss+xml" title="An's blog" href="/rss.xml" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)" />
+    <script is:inline>
+      // Áp theme trước khi vẽ để không bị chớp sáng; chạy lại sau mỗi lần chuyển trang.
+      const applyTheme = () => {
+        const saved = localStorage.getItem('theme');
+        const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', dark);
+      };
+      applyTheme();
+      document.addEventListener('astro:after-swap', applyTheme);
+    </script>
+    <ClientRouter />
   </head>
-  <body>
-    <main>
-      <slot />
+  <body class="min-h-dvh">
+    <div class="mx-auto flex min-h-dvh max-w-3xl flex-col px-5 sm:px-8">
+      <Header />
+      <main class="flex-1 pt-10 pb-20 sm:pt-14">
+        <slot />
+      </main>
       <Footer />
-    </main>
+    </div>
   </body>
 </html>

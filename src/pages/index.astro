@@ -1,60 +1,73 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Tag from '../components/Tag.astro';
-import { getExcerpt, getThumbnail, datePathParts, postHref } from '../lib/posts';
+import SectionHeading from '../components/SectionHeading.astro';
+import PostList from '../components/PostList.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { site, socials, now } from '../site.config';
+import { getPosts } from '../lib/posts';
+import { getProjects } from '../lib/projects';
 
-const allPosts = await getCollection('posts');
-const posts = allPosts
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .map((post) => {
-    const { year, month, day } = datePathParts(post.data.date);
-    return {
-      post,
-      href: postHref(post.id, post.data.date),
-      dateLabel: `${year} · ${month} · ${day}`,
-      excerpt: getExcerpt(post.body ?? '', post.data.truncate_words),
-      thumbnail: getThumbnail(post.body ?? '', post.data.featured_image),
-    };
-  });
+const posts = (await getPosts()).slice(0, 5);
+const projects = await getProjects();
+const featured = (projects.some((p) => p.data.featured) ? projects.filter((p) => p.data.featured) : projects).slice(0, 4);
 ---
-<BaseLayout title="An's blog">
-  <Header current="notes" />
-
-  <div class="intro">
-    <div class="intro-avatar"><span>AT</span></div>
-    <div>
-      <p>
-        Mình là An — làm 3D thi thoảng, viết script khi không tìm ra tool nào làm sẵn việc mình
-        cần, và hay vọc mấy thứ liên quan tới mạng/network cho vui. Đây là nơi note lại những gì
-        mày mò được.
-      </p>
-      <div class="intro-pills">
-        <span class="pill" data-cat="art">Blender &amp; 3D</span>
-        <span class="pill" data-cat="script">Scripting</span>
-        <span class="pill" data-cat="game">Game dev</span>
-        <span class="pill" data-cat="guide">Networking</span>
+<BaseLayout>
+  <div>
+    <section class="flex flex-col gap-7 sm:flex-row sm:items-start sm:gap-9">
+      {site.avatar ? (
+        <img src={site.avatar} alt={site.name} class="size-20 shrink-0 rounded-2xl object-cover" />
+      ) : (
+        <div class="grid size-20 shrink-0 place-items-center rounded-2xl bg-surface font-mono text-xl font-semibold text-muted ring-1 ring-line">
+          {site.initials}
+        </div>
+      )}
+      <div>
+        <h1 class="text-[2.1rem] leading-tight font-semibold tracking-tight sm:text-[2.5rem]">{site.name}</h1>
+        <p class="mt-1.5 font-mono text-[0.85rem] text-accent">{site.role}</p>
+        <p class="mt-5 max-w-[38rem] text-[1.06rem] leading-[1.75] text-muted">{site.intro}</p>
+        <ul class="mt-6 flex flex-wrap gap-2">
+          {socials.map((s) => (
+            <li>
+              <a
+                href={s.href}
+                class="inline-flex items-center rounded-full border border-line px-3.5 py-1.5 text-sm text-muted transition-colors hover:border-accent hover:text-accent"
+              >
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
+    </section>
   </div>
 
-  <div class="index-heading">Notes — {posts.length} entries</div>
-  <ul class="entries">
-    {posts.map(({ post, href, dateLabel, excerpt, thumbnail }) => (
-      <li class="entry" data-cat={post.data.category}>
-        <div class="entry-date">{dateLabel}</div>
-        <div class="entry-main">
-          <div class="entry-text">
-            <h3 class="entry-title"><a href={href}>{post.data.title}</a></h3>
-            <p class="entry-excerpt">{excerpt}</p>
-            <div class="entry-tags">
-              {post.data.tags.map((tag) => <Tag text={tag} />)}
-            </div>
-          </div>
-          {thumbnail && <img class="entry-thumb" src={thumbnail} alt="" loading="lazy" />}
-        </div>
-      </li>
-    ))}
-  </ul>
+  {featured.length > 0 && (
+    <section class="mt-20">
+      <SectionHeading title="Dự án" href="/projects/" />
+      <div class="grid gap-x-7 gap-y-10 sm:grid-cols-2">
+        {featured.map((p) => <ProjectCard project={p} />)}
+      </div>
+    </section>
+  )}
+
+  <div class="mt-20 grid gap-16">
+    <section>
+      <SectionHeading title="Bài viết gần đây" href="/blog/" />
+      <PostList posts={posts} />
+    </section>
+
+    {now.length > 0 && (
+      <section>
+        <SectionHeading title="Hiện tại" />
+        <ul class="space-y-2.5">
+          {now.map((item) => (
+            <li class="flex gap-3 leading-relaxed text-muted">
+              <span class="mt-[0.7em] size-1.5 shrink-0 rounded-full bg-accent"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </div>
 </BaseLayout>

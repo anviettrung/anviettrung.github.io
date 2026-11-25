@@ -1,23 +1,31 @@
 ---
-import Monogram from './Monogram.astro';
+import { site, nav } from '../site.config';
+import ThemeToggle from './ThemeToggle.astro';
 
-interface Props {
-  compact?: boolean;
-  current?: 'notes' | 'about';
-}
-const { compact = false, current } = Astro.props;
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  path.startsWith(href) || (href === '/blog/' && /^\/\d{4}\//.test(path));
 ---
-<div class="site-head" style={compact ? 'padding-top:32px' : undefined}>
-  <a class="brand" href="/">
-    <Monogram />
-    <div>
-      <div class="site-title"><span>An's blog</span></div>
-      {!compact && <div class="site-tag">những ghi chép của An Việt Trung</div>}
-    </div>
+<header class="flex items-center justify-between gap-4 border-b border-line py-5">
+  <a href="/" class="group flex items-center gap-2.5 font-semibold tracking-tight">
+    <span class="grid size-7 place-items-center rounded-md bg-fg font-mono text-[0.7rem] font-bold text-bg transition group-hover:bg-accent">
+      {site.initials}
+    </span>
+    <span class="hidden sm:inline">{site.name}</span>
   </a>
-  <nav class="site-nav">
-    <a href="/" aria-current={current === 'notes' ? 'page' : undefined}>Notes</a>
-    <a href="/about/" aria-current={current === 'about' ? 'page' : undefined}>About</a>
-    <a href="/rss.xml">RSS</a>
+  <nav class="flex items-center gap-1 text-[0.92rem]">
+    {nav.map((item) => (
+      <a
+        href={item.href}
+        class:list={[
+          'rounded-md px-2.5 py-1.5 transition-colors hover:text-fg',
+          isActive(item.href) ? 'text-fg' : 'text-muted',
+        ]}
+        aria-current={isActive(item.href) ? 'page' : undefined}
+      >
+        {item.label}
+      </a>
+    ))}
+    <ThemeToggle />
   </nav>
-</div>
+</header>

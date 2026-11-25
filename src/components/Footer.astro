@@ -1,6 +1,12 @@
 ---
+import { site, socials } from '../site.config';
+const year = new Date().getFullYear();
 ---
-<footer class="site-foot">
-  <span>An Việt Trung</span>
-  <span><a href="mailto:an.viettrung.m@gmail.com">an.viettrung.m@gmail.com</a> · <a href="/rss.xml">RSS</a></span>
+<footer class="flex flex-col gap-3 border-t border-line py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+  <span>© {year} {site.name}</span>
+  <ul class="flex flex-wrap gap-x-5 gap-y-1">
+    {socials.map((s) => (
+      <li><a href={s.href} class="transition-colors hover:text-fg">{s.label}</a></li>
+    ))}
+  </ul>
 </footer>

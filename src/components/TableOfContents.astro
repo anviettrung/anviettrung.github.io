@@ -1,18 +1,122 @@
 ---
+/**
+ * Mục lục bài viết.
+ * - Màn rộng (xl trở lên): cột bên phải, dính theo khi cuộn, tô sáng mục đang đọc.
+ * - Màn hẹp: khối thu gọn ở đầu bài.
+ * Đặt trong một phần tử `relative` bọc nội dung bài.
+ */
 interface Props {
   headings: { depth: number; slug: string; text: string }[];
 }
 const items = Astro.props.headings.filter((h) => h.depth === 2 || h.depth === 3);
+const show = items.length >= 2;
 ---
-{items.length >= 3 && (
-  <details class="mb-10 rounded-lg border border-line px-4 py-3 text-[0.92rem]">
-    <summary class="eyebrow cursor-pointer select-none">Mục lục</summary>
-    <ol class="mt-3 space-y-1.5">
-      {items.map((h) => (
-        <li class:list={[h.depth === 3 && 'pl-4']}>
-          <a href={`#${h.slug}`} class="text-muted transition-colors hover:text-accent">{h.text}</a>
-        </li>
-      ))}
-    </ol>
-  </details>
+{show && (
+  <>
+    <details class="mb-10 rounded-lg border border-line px-4 py-3 text-[0.92rem] xl:hidden">
+      <summary class="eyebrow cursor-pointer select-none">Mục lục</summary>
+      <ol class="mt-3 space-y-1.5">
+        {items.map((h) => (
+          <li class:list={[h.depth === 3 && 'pl-4']}>
+            <a href={`#${h.slug}`} class="text-muted transition-colors hover:text-accent">{h.text}</a>
+          </li>
+        ))}
+      </ol>
+    </details>
+
+    <aside class="absolute top-0 left-full ml-10 hidden h-full w-52 xl:block" aria-label="Mục lục">
+      <nav class="sticky top-10 max-h-[calc(100dvh-5rem)] overflow-y-auto pb-4" data-toc>
+        <p class="eyebrow mb-3">Mục lục</p>
+        <ol class="space-y-0.5 border-l border-line text-[0.85rem] leading-snug">
+          {items.map((h) => (
+            <li>
+              <a
+                href={`#${h.slug}`}
+                data-toc-link={h.slug}
+                class:list={[
+                  '-ml-px block border-l border-transparent py-1 text-muted transition-colors hover:text-fg',
+                  h.depth === 3 ? 'pl-7' : 'pl-4',
+                ]}
+              >
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+        <a href="#top" class="mt-5 ml-4 inline-block text-[0.8rem] text-faint transition-colors hover:text-accent">
+          ↑ Lên đầu trang
+        </a>
+      </nav>
+    </aside>
+  </>
 )}
+
+<script>
+  // Tô sáng mục ứng với heading đang ở phần trên màn hình.
+  let cleanup: (() => void) | undefined;
+
+  function setup() {
+    cleanup?.();
+    const toc = document.querySelector('[data-toc]');
+    if (!toc) return;
+    const links = new Map<string, HTMLElement>();
+    toc.querySelectorAll<HTMLElement>('[data-toc-link]').forEach((a) => links.set(a.dataset.tocLink!, a));
+    const headings = [...links.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (headings.length === 0) return;
+
+    let active = '';
+    const setActive = (id: string) => {
+      if (id === active) return;
+      links.get(active)?.classList.remove('toc-active');
+      active = id;
+      const link = links.get(id);
+      link?.classList.add('toc-active');
+      link?.scrollIntoView({ block: 'nearest' });
+    };
+
+    const update = () => {
+      // Heading lên tới gần mép trên (khoảng scroll-margin) thì tính là đang đọc.
+      const offset = 96;
+      let current = headings[0]!.id;
+      for (const h of headings) {
+        if (h.getBoundingClientRect().top - offset <= 0) current = h.id;
+        else break;
+      }
+      // Cuộn tới cuối trang thì chọn mục cuối, kể cả khi heading cuối không lên được tới trên.
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        current = headings[headings.length - 1]!.id;
+      }
+      setActive(current);
+    };
+
+    // Bấm vào mục lục: tô sáng ngay mục đó, bỏ qua cập nhật theo cuộn tới khi cuộn mượt xong.
+    let lockUntil = 0;
+    links.forEach((link, id) => {
+      link.addEventListener('click', () => {
+        setActive(id);
+        lockUntil = performance.now() + 1000;
+      });
+    });
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        if (performance.now() > lockUntil) update();
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+    cleanup = () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }
+
+  document.addEventListener('astro:page-load', setup);
+</script>

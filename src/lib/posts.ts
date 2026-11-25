@@ -1,3 +1,4 @@
+import { getCollection } from 'astro:content';
 import { marked } from 'marked';
 
 const EXCERPT_START = '<!--excerpt.start-->';
@@ -82,3 +83,20 @@ export function getThumbnail(rawBody: string, featuredImage?: string): string | 
 
 export const CATEGORIES = ['art', 'script', 'guide', 'game'] as const;
 export type Category = (typeof CATEGORIES)[number];
+
+export const CATEGORY_LABELS: Record<Category, string> = {
+  art: '3D & Art',
+  script: 'Scripting',
+  guide: 'Hướng dẫn',
+  game: 'Game',
+};
+
+export async function getPosts() {
+  const all = await getCollection('posts', (p) => !p.data.draft);
+  return all.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+}
+
+export function formatDate(date: Date): string {
+  const { year, month, day } = datePathParts(date);
+  return `${day}.${month}.${year}`;
+}

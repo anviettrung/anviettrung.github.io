@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
 ---
-<BaseLayout title="404 — An's blog">
-  <Header compact />
-  <div style="text-align:center; padding: 60px 0;">
-    <h1 style="font-size:4em; margin: 30px 0; letter-spacing:-1px;">404</h1>
-    <p><strong>Page not found :(</strong></p>
-    <p class="entry-excerpt" style="margin: 0 auto;">The requested page could not be found.</p>
+<BaseLayout title="Không tìm thấy trang">
+  <div class="py-16 text-center">
+    <p class="font-mono text-6xl font-semibold text-faint">404</p>
+    <h1 class="mt-6 text-2xl font-semibold tracking-tight">Không tìm thấy trang này</h1>
+    <p class="mt-3 text-muted">Trang có thể đã bị đổi chỗ hoặc không còn nữa.</p>
+    <div class="mt-8 flex justify-center gap-3 text-sm">
+      <a href="/" class="rounded-full border border-line px-4 py-2 transition-colors hover:border-accent hover:text-accent">Về trang chủ</a>
+      <a href="/blog/" class="rounded-full border border-line px-4 py-2 transition-colors hover:border-accent hover:text-accent">Xem blog</a>
+    </div>
   </div>
 </BaseLayout>

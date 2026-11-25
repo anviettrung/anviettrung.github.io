@@ -1,7 +1,13 @@
 ---
 interface Props {
   text: string;
+  href?: string;
 }
-const { text } = Astro.props;
+const { text, href } = Astro.props;
+const cls = 'inline-block rounded-md bg-surface px-2 py-0.5 font-mono text-[0.72rem] text-muted';
 ---
-<span class="tag">{text}</span>
+{href ? (
+  <a href={href} class={`${cls} transition-colors hover:text-accent`}>#{text}</a>
+) : (
+  <span class={cls}>{text}</span>
+)}

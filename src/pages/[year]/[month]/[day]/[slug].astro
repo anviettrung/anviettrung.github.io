@@ -1,43 +1,71 @@
 ---
-import { getCollection, render } from 'astro:content';
+// Giữ nguyên URL kiểu Jekyll cũ (/YYYY/MM/DD/slug/) để link ngoài không gãy.
+import { render } from 'astro:content';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import Header from '../../../../components/Header.astro';
 import Tag from '../../../../components/Tag.astro';
 import TableOfContents from '../../../../components/TableOfContents.astro';
 import Lightbox from '../../../../components/Lightbox.astro';
-import { getReadingTimeLabel, datePathParts, slugFromId } from '../../../../lib/posts';
+import PostList from '../../../../components/PostList.astro';
+import {
+  getPosts,
+  getExcerpt,
+  getReadingTimeLabel,
+  datePathParts,
+  slugFromId,
+  formatDate,
+  CATEGORY_LABELS,
+} from '../../../../lib/posts';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  return posts.map((post) => {
+  const posts = await getPosts();
+  return posts.map((post, i) => {
     const { year, month, day } = datePathParts(post.data.date);
-    return { params: { year, month, day, slug: slugFromId(post.id) }, props: { post } };
+    return {
+      params: { year, month, day, slug: slugFromId(post.id) },
+      props: { post, newer: posts[i - 1], older: posts[i + 1] },
+    };
   });
 }
 
-const { post } = Astro.props;
+const { post, newer, older } = Astro.props;
 const { Content, headings } = await render(post);
-const readingTime = getReadingTimeLabel(post.body ?? '');
-const dateLabel = post.data.date.toISOString().slice(0, 10);
 const image = post.data.featured_image ? `/assets/images/${post.data.featured_image}` : undefined;
+const description = getExcerpt(post.body ?? '', post.data.truncate_words);
+const around = [newer, older].filter((p) => p !== undefined);
 ---
-<BaseLayout title={`${post.data.title} — An's blog`} image={image}>
-  <Header compact current="notes" />
+<BaseLayout title={post.data.title} description={description} image={image}>
+  <article>
+    <header class="mb-10">
+      <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 font-mono text-[0.78rem] text-faint">
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+        <span aria-hidden="true">·</span>
+        <span>{getReadingTimeLabel(post.body ?? '')}</span>
+        <span aria-hidden="true">·</span>
+        <span class="text-accent">{CATEGORY_LABELS[post.data.category]}</span>
+      </div>
+      <h1 class="mt-3 text-[2rem] leading-tight font-semibold tracking-tight sm:text-[2.3rem]">
+        {post.data.title}
+      </h1>
+      {post.data.tags.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-1.5">
+          {post.data.tags.map((t) => <Tag text={t} href={`/blog/tags/${encodeURIComponent(t)}/`} />)}
+        </div>
+      )}
+    </header>
 
-  <div class="post-head" data-cat={post.data.category}>
-    <div class="post-meta">
-      <span>{dateLabel}</span><span class="dot">·</span><span>{readingTime}</span>
-      {post.data.tags.length > 0 && <span class="dot">·</span>}
-      {post.data.tags.map((tag) => <Tag text={tag} />)}
+    <TableOfContents headings={headings} />
+
+    <div class="prose" data-pagefind-body>
+      <Content />
     </div>
-    <h1 class="post-title">{post.data.title}</h1>
-  </div>
-
-  <TableOfContents headings={headings} />
-
-  <article class="post-body">
-    <Content />
   </article>
+
+  {around.length > 0 && (
+    <nav class="mt-20 border-t border-line pt-8">
+      <h2 class="eyebrow mb-3">Đọc tiếp</h2>
+      <PostList posts={around} />
+    </nav>
+  )}
 </BaseLayout>
 
 <Lightbox />
